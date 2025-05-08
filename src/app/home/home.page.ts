@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Person } from './model/person';
+
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
+
+
 export class HomePage {
 
-  constructor() {}
+  height: number = 0;
+  weight: number = 0;
+  bmi: number = 0;
+  type: string = "";
+  isExist: boolean = false;
 
+  calculateBMI()
+  {
+    const person = new Person(this.height, this.weight);
+
+    this.isExist = person.isExist()
+    this.bmi = Math.round(person.getBMI() * 10) / 10;
+    this.type = person.getType()
+  }
 }

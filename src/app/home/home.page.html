@@ -1,20 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Tính chỉ số BMI
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="input">
+    <ion-item>
+      <ion-label position="floating">Cân nặng (kg)</ion-label>
+      <ion-input type="number" [(ngModel)]="weight"></ion-input>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-item>
+      <ion-label position="floating">Chiều cao (m)</ion-label>
+      <ion-input type="number" [(ngModel)]="height"></ion-input>
+    </ion-item>
   </div>
+
+  <ion-button expand="block" (click)="calculateBMI()">Tính BMI</ion-button>
+
+  <div class="output">
+    <div *ngIf="isExist===true">
+      <p>BMI: {{ bmi }}</p>
+      <p>Phân loại: {{ type }}</p>
+    </div>
+  </div>
+
+
 </ion-content>
