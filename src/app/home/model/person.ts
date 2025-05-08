@@ -73,6 +73,21 @@ export class Person
     }
 
 
+
+    /**
+     * Kiểm tra các chỉ số có phù hợp với người thường không.
+     * Chiều cao hợp lệ từ 0.3m đến 2.5m và cân nặng hợp lệ từ 1kg đến 300kg.
+     * @returns {boolean} - Tính khả thi
+     */
+    isValid(): boolean
+    {
+        return this.isExist() &&
+                0.5 <= this.height && this.height <= 2.5 &&
+                2 <= this.weight && this.weight <= 250;
+    }
+
+
+
     /**
      * Chỉ số BMI
      * 

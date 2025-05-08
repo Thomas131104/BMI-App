@@ -10,7 +10,7 @@ export class BmiService {
 
   calculateBMI(height: number, weight: number): { bmi: number, type: string, isValid: boolean } {
     const person = new Person(height, weight);
-    const isValid = person.isExist();
+    const isValid = person.isValid();
     const bmi = isValid ? person.getBMI() : 0;
     const type = isValid ? person.getType() : "Invalid data";
     return { bmi, type, isValid };
