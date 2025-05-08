@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Person } from './model/person';
+import { BmiService } from '../home/services/bmi.service';
 
 
 @Component({
@@ -18,12 +18,12 @@ export class HomePage {
   type: string = "";
   isExist: boolean = false;
 
-  calculateBMI()
-  {
-    const person = new Person(this.height, this.weight);
+  constructor(private BmiService: BmiService) {}
 
-    this.isExist = person.isExist()
-    this.bmi = Math.round(person.getBMI() * 10) / 10;
-    this.type = person.getType()
+  calculateBMI() {
+    const { bmi, type, isValid } = this.BmiService.calculateBMI(this.height, this.weight);
+    this.bmi = bmi;
+    this.type = type;
+    this.isExist = isValid;
   }
 }
